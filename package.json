@@ -1,17 +1,13 @@
 {
-  "name": "dsa-visualizer",
-  "version": "1.0.0",
-  "description": "Create an interactive platform to visualize and understand various data structures and algorithms. Focus on an intuitive, user-friendly interface and real-time execution to help users visualize how algorithms work with dynamic inputs.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.9",
+    "process": "^0.11.10"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "@tailwindcss/postcss": "^4.0.6",
+    "@parcel/core": "^2.13.3",
     "parcel": "^2.13.3",
-    "tailwindcss": "^4.0.6"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.2.0"
   }
 }
