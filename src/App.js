@@ -1,21 +1,22 @@
 import React from "react";
 import { BrowserRouter, Routes,Route,Router } from "react-router";
-import Header from "./src/components/Header";
-import Sidebar from "./src/components/Sidebar";
-import Home from "./src/pages/Home";
-import Searching from "./src/pages/Searching";
-import Sorting from "./src/pages/Sorting";
-import Graph from "./src/pages/Graph";
-import Tree from "./src/pages/Tree";
-import LinearSearch from "./src/algorithms/Searching/LinearSearch";
-import BinarySearch from "./src/algorithms/Searching/BinarySearch";
-import BubbleSort from "./src/algorithms/Sorting/BubbleSort";
-import MergeSort from "./src/algorithms/Sorting/MergeSort";
-import QuickSort from "./src/algorithms/Sorting/QuickSort";
-import Bfs from "./src/algorithms/graph/Bfs";
-import Dfs from "./src/algorithms/graph/Dfs";
-import Dijkstra from "./src/algorithms/graph/Dijkstra";
-import Bst from "./src/algorithms/tree/Bst";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import Home from "./pages/Home";
+import Searching from "./pages/Searching";
+import Sorting from "./pages/Sorting"; // Fixed path
+import Graph from "./pages/Graph"; // Fixed path
+import Tree from "./pages/Tree"; // Fixed path
+
+import LinearSearch from "./algorithms/Searching/LinearSearch"; // Fixed path
+import BinarySearch from "./algorithms/Searching/BinarySearch";
+import BubbleSort from "./algorithms/Sorting/BubbleSort";
+import MergeSort from "./algorithms/Sorting/MergeSort";
+import QuickSort from "./algorithms/Sorting/QuickSort";
+import Bfs from "./algorithms/graph/Bfs";
+import Dfs from "./algorithms/graph/Dfs";
+import Dijkstra from "./algorithms/graph/Dijkstra";
+import Bst from "./algorithms/tree/Bst";
 
 export default function App() {
     return (
