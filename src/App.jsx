@@ -1,5 +1,6 @@
 import './App.css'
 import React from "react";
+import { Analytics } from "@vercel/analytics/react";
 import { BrowserRouter, Routes,Route,Router } from "react-router";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
