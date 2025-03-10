@@ -1,6 +1,6 @@
 # DSA-Visualizer
 
-![DSA Visualizer](https://your-image-url.com/banner.png)
+![DSA Visualizer]([https://your-image-url.com/banner.png](https://www.google.com/imgres?q=dsa%20photo&imgurl=https%3A%2F%2Fmedia.geeksforgeeks.org%2Fwp-content%2Fuploads%2F20230819113602%2Fdsa-by-sandeep-jain.png&imgrefurl=https%3A%2F%2Fwww.geeksforgeeks.org%2Fdsa-roadmap-for-beginner-to-advanced-by-sandeep-jain%2F&docid=PDxrCpzJ60MhvM&tbnid=JUJFAMoOfcrWhM&vet=12ahUKEwiN2L2e9f6LAxWjTGwGHRfOBX8QM3oECFYQAA..i&w=500&h=500&hcb=2&ved=2ahUKEwiN2L2e9f6LAxWjTGwGHRfOBX8QM3oECFYQAA))
 
 ## 🚀 About the Project
 
@@ -51,7 +51,7 @@ This project is **open-source**, and we welcome contributions to enhance and exp
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/DSA-Visualizer.git
+   git clone https://github.com/jayant125e/DSA-Visualizer.git
    cd DSA-Visualizer
    ```
 
@@ -89,4 +89,4 @@ This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for m
 - Performance optimizations for large datasets
 
 ---
-_Developed with ❤️ by [Your Name](https://github.com/your-username)_
+_Developed with ❤️ by [Your Name](https://github.com/jayant125)_
