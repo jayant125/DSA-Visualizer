@@ -1,3 +1,4 @@
+import './App.css'
 import React from "react";
 import { BrowserRouter, Routes,Route,Router } from "react-router";
 import Header from "./components/Header";
