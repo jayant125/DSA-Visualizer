@@ -33138,21 +33138,11 @@ const BubbleSort = ()=>{
     const [stepCount, setStepCount] = (0, _react.useState)(0);
     const [speed, setSpeed] = (0, _react.useState)(100);
     const canvasRef = (0, _react.useRef)(null);
-    // Function to handle user input
-    const handleUserInput = (event)=>{
-        const inputValues = event.target.value.split(',').map((num)=>parseInt(num.trim(), 10));
-        if (inputValues.every((num)=>!isNaN(num))) {
-            setArray(inputValues);
-            setSwaps(0);
-            setStepCount(0);
-            setIsSorting(false);
-            setCurrentCompare([]);
-        }
-    };
     // Generate initial array
     (0, _react.useEffect)(()=>{
         generateArray();
     }, []);
+    // Time complexity graph setup
     (0, _react.useEffect)(()=>{
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
@@ -33206,12 +33196,14 @@ const BubbleSort = ()=>{
         const width = 400;
         const height = 200;
         ctx.clearRect(0, 0, width, height);
+        // Axes
         ctx.beginPath();
         ctx.moveTo(30, 10);
         ctx.lineTo(30, height - 20);
         ctx.lineTo(width - 10, height - 20);
         ctx.strokeStyle = '#000';
         ctx.stroke();
+        // Labels
         ctx.fillStyle = '#000';
         ctx.fillText('Time Complexity', width / 2 - 40, 20);
         ctx.fillText('n (elements)', width - 30, height - 5);
@@ -33220,6 +33212,7 @@ const BubbleSort = ()=>{
         ctx.rotate(-Math.PI / 2);
         ctx.fillText("Operations (O(n\xb2))", 0, 0);
         ctx.restore();
+        // O(n²) curve
         ctx.beginPath();
         ctx.strokeStyle = '#ef4444';
         ctx.moveTo(30, height - 20);
@@ -33237,23 +33230,12 @@ const BubbleSort = ()=>{
                 children: "Bubble Sort Visualization"
             }, void 0, false, {
                 fileName: "src/algorithms/Sorting/BubbleSort.js",
-                lineNumber: 105,
+                lineNumber: 97,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 className: "mb-6 flex flex-wrap gap-4 justify-center items-center",
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                        type: "text",
-                        placeholder: "Enter numbers, separated by commas",
-                        onChange: handleUserInput,
-                        className: "border p-2 rounded w-64",
-                        disabled: isSorting
-                    }, void 0, false, {
-                        fileName: "src/algorithms/Sorting/BubbleSort.js",
-                        lineNumber: 110,
-                        columnNumber: 17
-                    }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                         onClick: generateArray,
                         className: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded",
@@ -33261,7 +33243,7 @@ const BubbleSort = ()=>{
                         children: "Generate New Array"
                     }, void 0, false, {
                         fileName: "src/algorithms/Sorting/BubbleSort.js",
-                        lineNumber: 118,
+                        lineNumber: 103,
                         columnNumber: 17
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -33271,13 +33253,51 @@ const BubbleSort = ()=>{
                         children: isSorting ? 'Sorting...' : 'Start Bubble Sort'
                     }, void 0, false, {
                         fileName: "src/algorithms/Sorting/BubbleSort.js",
-                        lineNumber: 126,
+                        lineNumber: 111,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "flex items-center gap-2",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "Speed:"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 120,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "range",
+                                min: "50",
+                                max: "1000",
+                                value: speed,
+                                onChange: (e)=>setSpeed(e.target.value),
+                                className: "w-32"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 121,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                children: [
+                                    1000 - speed + 50,
+                                    "ms"
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 129,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/BubbleSort.js",
+                        lineNumber: 119,
                         columnNumber: 17
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/algorithms/Sorting/BubbleSort.js",
-                lineNumber: 109,
+                lineNumber: 102,
                 columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -33294,23 +33314,233 @@ const BubbleSort = ()=>{
                             children: value
                         }, void 0, false, {
                             fileName: "src/algorithms/Sorting/BubbleSort.js",
-                            lineNumber: 144,
+                            lineNumber: 143,
                             columnNumber: 25
                         }, undefined)
                     }, index, false, {
                         fileName: "src/algorithms/Sorting/BubbleSort.js",
-                        lineNumber: 137,
+                        lineNumber: 136,
                         columnNumber: 21
                     }, undefined))
             }, void 0, false, {
                 fileName: "src/algorithms/Sorting/BubbleSort.js",
-                lineNumber: 135,
+                lineNumber: 134,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "grid md:grid-cols-3 gap-4 text-center mb-8",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white p-4 rounded-lg shadow",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "font-bold mb-2",
+                                children: "Time Complexity"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 151,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "O(n\xb2)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 152,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/BubbleSort.js",
+                        lineNumber: 150,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white p-4 rounded-lg shadow",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "font-bold mb-2",
+                                children: "Space Complexity"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 155,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "O(1)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 156,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/BubbleSort.js",
+                        lineNumber: 154,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white p-4 rounded-lg shadow",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "font-bold mb-2",
+                                children: "Comparisons/Swaps"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 159,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: [
+                                    stepCount,
+                                    " / ",
+                                    swaps
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 160,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/BubbleSort.js",
+                        lineNumber: 158,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                lineNumber: 149,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "bg-white p-4 rounded-lg shadow",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-xl font-bold mb-4 text-center",
+                        children: "Time Complexity Graph"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/BubbleSort.js",
+                        lineNumber: 166,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("canvas", {
+                        ref: canvasRef,
+                        width: 400,
+                        height: 200,
+                        className: "mx-auto"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/BubbleSort.js",
+                        lineNumber: 167,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mt-4 flex justify-center gap-4",
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                            className: "flex items-center gap-2",
+                            children: [
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                    className: "w-4 h-4 bg-red-500"
+                                }, void 0, false, {
+                                    fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                    lineNumber: 175,
+                                    columnNumber: 25
+                                }, undefined),
+                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                    children: "Bubble Sort (O(n\xb2))"
+                                }, void 0, false, {
+                                    fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                    lineNumber: 176,
+                                    columnNumber: 25
+                                }, undefined)
+                            ]
+                        }, void 0, true, {
+                            fileName: "src/algorithms/Sorting/BubbleSort.js",
+                            lineNumber: 174,
+                            columnNumber: 21
+                        }, undefined)
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/BubbleSort.js",
+                        lineNumber: 173,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                lineNumber: 165,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mt-8 p-4 bg-blue-50 rounded-lg",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-xl font-bold mb-4",
+                        children: "Bubble Sort Algorithm"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/BubbleSort.js",
+                        lineNumber: 183,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                        className: "list-disc pl-6 space-y-2",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Repeatedly steps through the list comparing adjacent elements"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 185,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Swaps elements if they're in the wrong order"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 186,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Continues until no swaps are needed (list is sorted)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 187,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Average and worst-case time complexity: O(n\xb2)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 188,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Best-case time complexity: O(n) (already sorted)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 189,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Space complexity: O(1) (in-place sorting)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                                lineNumber: 190,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/BubbleSort.js",
+                        lineNumber: 184,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/BubbleSort.js",
+                lineNumber: 182,
                 columnNumber: 13
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/algorithms/Sorting/BubbleSort.js",
-        lineNumber: 104,
+        lineNumber: 96,
         columnNumber: 9
     }, undefined);
 };
@@ -33325,7 +33555,7 @@ $RefreshReg$(_c, "BubbleSort");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"l58gS":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"l58gS":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$c770 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33334,24 +33564,636 @@ $parcel$ReactRefreshHelpers$c770.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>MergeSort);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function MergeSort() {
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _s = $RefreshSig$();
+const MergeSort = ()=>{
+    _s();
+    const [array, setArray] = (0, _react.useState)([]);
+    const [isSorting, setIsSorting] = (0, _react.useState)(false);
+    const [steps, setSteps] = (0, _react.useState)([]);
+    const [currentStep, setCurrentStep] = (0, _react.useState)(0);
+    const [splitHistory, setSplitHistory] = (0, _react.useState)([]);
+    const [mergeHistory, setMergeHistory] = (0, _react.useState)([]);
+    const [speed, setSpeed] = (0, _react.useState)(100);
+    const [comparisons, setComparisons] = (0, _react.useState)(0);
+    const canvasRef = (0, _react.useRef)(null);
+    // Generate initial array
+    (0, _react.useEffect)(()=>{
+        generateArray();
+    }, []);
+    // Time complexity graph setup
+    (0, _react.useEffect)(()=>{
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        drawComplexityGraph(ctx);
+    }, [
+        array.length
+    ]);
+    const generateArray = ()=>{
+        const newArray = Array.from({
+            length: 16
+        }, ()=>Math.floor(Math.random() * 90) + 10);
+        setArray(newArray);
+        setIsSorting(false);
+        setSteps([]);
+        setCurrentStep(0);
+        setSplitHistory([]);
+        setMergeHistory([]);
+        setComparisons(0);
+    };
+    const mergeSort = async ()=>{
+        setIsSorting(true);
+        let arr = [
+            ...array
+        ];
+        let stepList = [];
+        let splitHist = [];
+        let mergeHist = [];
+        let compCount = 0;
+        const merge = async (left, right)=>{
+            let result = [];
+            let leftIdx = 0;
+            let rightIdx = 0;
+            while(leftIdx < left.length && rightIdx < right.length){
+                compCount++;
+                if (left[leftIdx] < right[rightIdx]) {
+                    result.push(left[leftIdx]);
+                    leftIdx++;
+                } else {
+                    result.push(right[rightIdx]);
+                    rightIdx++;
+                }
+                stepList.push([
+                    ...result,
+                    ...left.slice(leftIdx),
+                    ...right.slice(rightIdx)
+                ]);
+                mergeHist.push([
+                    ...result
+                ]);
+            }
+            return result.concat(left.slice(leftIdx)).concat(right.slice(rightIdx));
+        };
+        const sort = async (arr)=>{
+            if (arr.length <= 1) return arr;
+            const mid = Math.floor(arr.length / 2);
+            const left = arr.slice(0, mid);
+            const right = arr.slice(mid);
+            splitHist.push([
+                left,
+                right
+            ]);
+            setSplitHistory([
+                ...splitHist
+            ]);
+            return await merge(await sort(left), await sort(right));
+        };
+        const sortedArray = await sort(arr);
+        setSteps(stepList);
+        setComparisons(compCount);
+        // Visualize steps
+        for(let i = 0; i < stepList.length; i++){
+            setCurrentStep(i);
+            await new Promise((resolve)=>setTimeout(resolve, speed));
+        }
+        setIsSorting(false);
+    };
+    const drawComplexityGraph = (ctx)=>{
+        const width = 400;
+        const height = 200;
+        ctx.clearRect(0, 0, width, height);
+        // Axes
+        ctx.beginPath();
+        ctx.moveTo(30, 10);
+        ctx.lineTo(30, height - 20);
+        ctx.lineTo(width - 10, height - 20);
+        ctx.strokeStyle = '#000';
+        ctx.stroke();
+        // Labels
+        ctx.fillStyle = '#000';
+        ctx.fillText('Time Complexity', width / 2 - 40, 20);
+        ctx.fillText('n (elements)', width - 30, height - 5);
+        ctx.save();
+        ctx.translate(10, height / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Operations (O(n log n))', 0, 0);
+        ctx.restore();
+        // O(n log n) curve
+        ctx.beginPath();
+        ctx.strokeStyle = '#3B82F6';
+        ctx.moveTo(30, height - 20);
+        for(let x = 0; x <= array.length; x++){
+            const y = height - 20 - x * Math.log2(x + 1) / (array.length / 3);
+            ctx.lineTo(30 + x * (width - 40) / array.length, y || height - 20);
+        }
+        ctx.stroke();
+        // O(n²) comparison
+        ctx.beginPath();
+        ctx.strokeStyle = '#ef4444';
+        ctx.moveTo(30, height - 20);
+        for(let x = 0; x <= array.length; x++){
+            const y = height - 20 - x * x / (array.length / 2);
+            ctx.lineTo(30 + x * (width - 40) / array.length, y);
+        }
+        ctx.stroke();
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "MergeSort Visualization Coming Soon"
-        }, void 0, false, {
-            fileName: "src/algorithms/Sorting/MergeSort.js",
-            lineNumber: 4,
-            columnNumber: 13
-        }, this)
-    }, void 0, false, {
+        className: "container mx-auto p-8",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                className: "text-3xl font-bold mb-6 text-center text-blue-600",
+                children: "Merge Sort Visualization"
+            }, void 0, false, {
+                fileName: "src/algorithms/Sorting/MergeSort.js",
+                lineNumber: 142,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mb-6 flex flex-wrap gap-4 justify-center items-center",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: generateArray,
+                        className: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded",
+                        disabled: isSorting,
+                        children: "Generate New Array"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 148,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: mergeSort,
+                        className: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded",
+                        disabled: isSorting,
+                        children: isSorting ? 'Sorting...' : 'Start Merge Sort'
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 156,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "flex items-center gap-2",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "Speed:"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 165,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "range",
+                                min: "50",
+                                max: "1000",
+                                value: speed,
+                                onChange: (e)=>setSpeed(e.target.value),
+                                className: "w-32"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 166,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                children: [
+                                    1000 - speed + 50,
+                                    "ms"
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 174,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 164,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/MergeSort.js",
+                lineNumber: 147,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "space-y-8",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mb-8",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "text-lg font-bold mb-2",
+                                children: "Original Array"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 182,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "flex justify-center gap-1",
+                                children: array.map((value, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "w-8 h-8 bg-blue-200 flex items-center justify-center rounded",
+                                        children: value
+                                    }, index, false, {
+                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                        lineNumber: 185,
+                                        columnNumber: 29
+                                    }, undefined))
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 183,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 181,
+                        columnNumber: 17
+                    }, undefined),
+                    splitHistory.length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mb-8",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "text-lg font-bold mb-2",
+                                children: "Splitting"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 198,
+                                columnNumber: 25
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "flex flex-col items-center gap-2",
+                                children: splitHistory.map(([left, right], idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "flex gap-4",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "flex gap-1 bg-blue-50 p-2 rounded",
+                                                children: left.map((num, i)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                        className: "w-6 h-6 bg-blue-300 flex items-center justify-center rounded text-xs",
+                                                        children: num
+                                                    }, i, false, {
+                                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                                        lineNumber: 204,
+                                                        columnNumber: 45
+                                                    }, undefined))
+                                            }, void 0, false, {
+                                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                                lineNumber: 202,
+                                                columnNumber: 37
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: "flex gap-1 bg-blue-50 p-2 rounded",
+                                                children: right.map((num, i)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                        className: "w-6 h-6 bg-blue-300 flex items-center justify-center rounded text-xs",
+                                                        children: num
+                                                    }, i, false, {
+                                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                                        lineNumber: 211,
+                                                        columnNumber: 45
+                                                    }, undefined))
+                                            }, void 0, false, {
+                                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                                lineNumber: 209,
+                                                columnNumber: 37
+                                            }, undefined)
+                                        ]
+                                    }, idx, true, {
+                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                        lineNumber: 201,
+                                        columnNumber: 33
+                                    }, undefined))
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 199,
+                                columnNumber: 25
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 197,
+                        columnNumber: 21
+                    }, undefined),
+                    steps.length > 0 && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mb-8",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "text-lg font-bold mb-2",
+                                children: "Merging"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 225,
+                                columnNumber: 25
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "flex flex-col items-center gap-2",
+                                children: steps.slice(0, currentStep + 1).map((step, idx)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "flex gap-1 bg-green-50 p-2 rounded",
+                                        children: step.map((num, i)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                                className: `w-6 h-6 flex items-center justify-center rounded text-xs
+                                                ${i < currentStep % step.length ? 'bg-green-400' : 'bg-green-300'}`,
+                                                children: num
+                                            }, i, false, {
+                                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                                lineNumber: 230,
+                                                columnNumber: 41
+                                            }, undefined))
+                                    }, idx, false, {
+                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                        lineNumber: 228,
+                                        columnNumber: 33
+                                    }, undefined))
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 226,
+                                columnNumber: 25
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 224,
+                        columnNumber: 21
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/MergeSort.js",
+                lineNumber: 179,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "grid md:grid-cols-3 gap-4 text-center mb-8",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white p-4 rounded-lg shadow",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "font-bold mb-2",
+                                children: "Time Complexity"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 248,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "O(n log n)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 249,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 247,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white p-4 rounded-lg shadow",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "font-bold mb-2",
+                                children: "Space Complexity"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 252,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "O(n)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 253,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 251,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white p-4 rounded-lg shadow",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "font-bold mb-2",
+                                children: "Comparisons"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 256,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: comparisons
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 257,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 255,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/MergeSort.js",
+                lineNumber: 246,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "bg-white p-4 rounded-lg shadow",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-xl font-bold mb-4 text-center",
+                        children: "Time Complexity Comparison"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 263,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("canvas", {
+                        ref: canvasRef,
+                        width: 400,
+                        height: 200,
+                        className: "mx-auto"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 264,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mt-4 flex justify-center gap-4",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "w-4 h-4 bg-blue-500"
+                                    }, void 0, false, {
+                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                        lineNumber: 272,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: "Merge Sort (O(n log n))"
+                                    }, void 0, false, {
+                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                        lineNumber: 273,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 271,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "w-4 h-4 bg-red-500"
+                                    }, void 0, false, {
+                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                        lineNumber: 276,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: "Bubble Sort (O(n\xb2))"
+                                    }, void 0, false, {
+                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                        lineNumber: 277,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 275,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 270,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/MergeSort.js",
+                lineNumber: 262,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mt-8 p-4 bg-blue-50 rounded-lg",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-xl font-bold mb-4",
+                        children: "Merge Sort Algorithm"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 284,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                        className: "list-disc pl-6 space-y-2",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Divide-and-conquer algorithm with O(n log n) time complexity"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 286,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Stable sorting algorithm (maintains relative order)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 287,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: [
+                                    "Steps:",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ol", {
+                                        className: "list-decimal pl-8 mt-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                                children: "Divide the unsorted array into n subarrays of single elements"
+                                            }, void 0, false, {
+                                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                                lineNumber: 290,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                                children: "Repeatedly merge subarrays to produce new sorted subarrays"
+                                            }, void 0, false, {
+                                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                                lineNumber: 291,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                                children: "Continue until final merged array is completely sorted"
+                                            }, void 0, false, {
+                                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                                lineNumber: 292,
+                                                columnNumber: 29
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                                        lineNumber: 289,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 288,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Space complexity: O(n) for temporary arrays"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 295,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Efficient for large datasets"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 296,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Works well for linked lists and external sorting"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/MergeSort.js",
+                                lineNumber: 297,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/MergeSort.js",
+                        lineNumber: 285,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/MergeSort.js",
+                lineNumber: 283,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/algorithms/Sorting/MergeSort.js",
-        lineNumber: 3,
+        lineNumber: 141,
         columnNumber: 9
-    }, this);
-}
+    }, undefined);
+};
+_s(MergeSort, "0jzNo2NTA+hFWAqBZXEXaT7bp90=");
 _c = MergeSort;
+exports.default = MergeSort;
 var _c;
 $RefreshReg$(_c, "MergeSort");
 
@@ -33360,7 +34202,7 @@ $RefreshReg$(_c, "MergeSort");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lMgeT":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"lMgeT":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$761e = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -33369,24 +34211,536 @@ $parcel$ReactRefreshHelpers$761e.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>QuickSort);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
-function QuickSort() {
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _s = $RefreshSig$();
+const QuickSort = ()=>{
+    _s();
+    const [array, setArray] = (0, _react.useState)([]);
+    const [isSorting, setIsSorting] = (0, _react.useState)(false);
+    const [stack, setStack] = (0, _react.useState)([]);
+    const [pivot, setPivot] = (0, _react.useState)(null);
+    const [pointers, setPointers] = (0, _react.useState)({
+        left: null,
+        right: null
+    });
+    const [swaps, setSwaps] = (0, _react.useState)(0);
+    const [speed, setSpeed] = (0, _react.useState)(100);
+    const canvasRef = (0, _react.useRef)(null);
+    // Generate initial array
+    (0, _react.useEffect)(()=>{
+        generateArray();
+    }, []);
+    // Time complexity graph setup
+    (0, _react.useEffect)(()=>{
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext('2d');
+        drawComplexityGraph(ctx);
+    }, [
+        array.length
+    ]);
+    const generateArray = ()=>{
+        const newArray = Array.from({
+            length: 15
+        }, ()=>Math.floor(Math.random() * 90) + 10);
+        setArray(newArray);
+        setIsSorting(false);
+        setStack([]);
+        setPivot(null);
+        setPointers({
+            left: null,
+            right: null
+        });
+        setSwaps(0);
+    };
+    const quickSort = async ()=>{
+        setIsSorting(true);
+        let arr = [
+            ...array
+        ];
+        let swapCount = 0;
+        const tempStack = [
+            [
+                0,
+                arr.length - 1
+            ]
+        ];
+        while(tempStack.length){
+            const [low, high] = tempStack.pop();
+            if (low < high) {
+                const pivotIndex = await partition(arr, low, high);
+                tempStack.push([
+                    low,
+                    pivotIndex - 1
+                ]);
+                tempStack.push([
+                    pivotIndex + 1,
+                    high
+                ]);
+                setStack([
+                    ...tempStack
+                ]);
+                swapCount++;
+                setSwaps(swapCount);
+            }
+        }
+        setIsSorting(false);
+    };
+    const partition = async (arr, low, high)=>{
+        const pivotValue = arr[high];
+        let i = low - 1;
+        setPivot(high);
+        for(let j = low; j < high; j++){
+            setPointers({
+                left: j,
+                right: i
+            });
+            await new Promise((resolve)=>setTimeout(resolve, speed));
+            if (arr[j] <= pivotValue) {
+                i++;
+                [arr[i], arr[j]] = [
+                    arr[j],
+                    arr[i]
+                ];
+                setArray([
+                    ...arr
+                ]);
+                await new Promise((resolve)=>setTimeout(resolve, speed));
+            }
+        }
+        [arr[i + 1], arr[high]] = [
+            arr[high],
+            arr[i + 1]
+        ];
+        setArray([
+            ...arr
+        ]);
+        return i + 1;
+    };
+    const drawComplexityGraph = (ctx)=>{
+        const width = 400;
+        const height = 200;
+        ctx.clearRect(0, 0, width, height);
+        // Axes
+        ctx.beginPath();
+        ctx.moveTo(30, 10);
+        ctx.lineTo(30, height - 20);
+        ctx.lineTo(width - 10, height - 20);
+        ctx.strokeStyle = '#000';
+        ctx.stroke();
+        // Labels
+        ctx.fillStyle = '#000';
+        ctx.fillText('Time Complexity', width / 2 - 40, 20);
+        ctx.fillText('n (elements)', width - 30, height - 5);
+        ctx.save();
+        ctx.translate(10, height / 2);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('Operations', 0, 0);
+        ctx.restore();
+        // O(n log n) curve
+        ctx.beginPath();
+        ctx.strokeStyle = '#3B82F6';
+        ctx.moveTo(30, height - 20);
+        for(let x = 0; x <= array.length; x++){
+            const y = height - 20 - x * Math.log2(x + 1) / (array.length / 3);
+            ctx.lineTo(30 + x * (width - 40) / array.length, y || height - 20);
+        }
+        ctx.stroke();
+        // O(n²) comparison
+        ctx.beginPath();
+        ctx.strokeStyle = '#ef4444';
+        ctx.moveTo(30, height - 20);
+        for(let x = 0; x <= array.length; x++){
+            const y = height - 20 - x * x / (array.length / 2);
+            ctx.lineTo(30 + x * (width - 40) / array.length, y);
+        }
+        ctx.stroke();
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "QuickSort Algorithm Visualization Coming Soon"
-        }, void 0, false, {
-            fileName: "src/algorithms/Sorting/QuickSort.js",
-            lineNumber: 4,
-            columnNumber: 13
-        }, this)
-    }, void 0, false, {
+        className: "container mx-auto p-8",
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
+                className: "text-3xl font-bold mb-6 text-center text-purple-600",
+                children: "Quick Sort Visualization"
+            }, void 0, false, {
+                fileName: "src/algorithms/Sorting/QuickSort.js",
+                lineNumber: 124,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mb-6 flex flex-wrap gap-4 justify-center items-center",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: generateArray,
+                        className: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded",
+                        disabled: isSorting,
+                        children: "Generate New Array"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 130,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                        onClick: quickSort,
+                        className: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded",
+                        disabled: isSorting,
+                        children: isSorting ? 'Sorting...' : 'Start Quick Sort'
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 138,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "flex items-center gap-2",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                                children: "Speed:"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 147,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                type: "range",
+                                min: "50",
+                                max: "1000",
+                                value: speed,
+                                onChange: (e)=>setSpeed(e.target.value),
+                                className: "w-32"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 148,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                children: [
+                                    1000 - speed + 50,
+                                    "ms"
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 156,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 146,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/QuickSort.js",
+                lineNumber: 129,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "flex justify-center items-end h-64 mb-8 gap-1",
+                children: array.map((value, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: `w-8 text-center transition-all duration-300
+                            ${index === pivot ? 'bg-yellow-400' : index === pointers.left ? 'bg-red-400' : index === pointers.right ? 'bg-green-400' : 'bg-purple-400'}`,
+                        style: {
+                            height: `${value}%`
+                        },
+                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                            className: "text-xs text-white",
+                            children: value
+                        }, void 0, false, {
+                            fileName: "src/algorithms/Sorting/QuickSort.js",
+                            lineNumber: 171,
+                            columnNumber: 25
+                        }, undefined)
+                    }, index, false, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 163,
+                        columnNumber: 21
+                    }, undefined))
+            }, void 0, false, {
+                fileName: "src/algorithms/Sorting/QuickSort.js",
+                lineNumber: 161,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "grid md:grid-cols-3 gap-4 text-center mb-8",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white p-4 rounded-lg shadow",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "font-bold mb-2",
+                                children: "Time Complexity"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 179,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "O(n log n) avg"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 180,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "O(n\xb2) worst"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 181,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 178,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white p-4 rounded-lg shadow",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "font-bold mb-2",
+                                children: "Space Complexity"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 184,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: "O(log n)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 185,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 183,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "bg-white p-4 rounded-lg shadow",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                                className: "font-bold mb-2",
+                                children: "Swaps/Partitions"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 188,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                children: swaps
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 189,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 187,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/QuickSort.js",
+                lineNumber: 177,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "bg-white p-4 rounded-lg shadow",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-xl font-bold mb-4 text-center",
+                        children: "Time Complexity Comparison"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 195,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("canvas", {
+                        ref: canvasRef,
+                        width: 400,
+                        height: 200,
+                        className: "mx-auto"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 196,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                        className: "mt-4 flex justify-center gap-4",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "w-4 h-4 bg-blue-500"
+                                    }, void 0, false, {
+                                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                                        lineNumber: 204,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: "Quick Sort (O(n log n))"
+                                    }, void 0, false, {
+                                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                                        lineNumber: 205,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 203,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                className: "flex items-center gap-2",
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "w-4 h-4 bg-red-500"
+                                    }, void 0, false, {
+                                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                                        lineNumber: 208,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                        children: "Worst Case (O(n\xb2))"
+                                    }, void 0, false, {
+                                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                                        lineNumber: 209,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 207,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 202,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/QuickSort.js",
+                lineNumber: 194,
+                columnNumber: 13
+            }, undefined),
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "mt-8 p-4 bg-purple-50 rounded-lg",
+                children: [
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
+                        className: "text-xl font-bold mb-4",
+                        children: "Quick Sort Algorithm"
+                    }, void 0, false, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 216,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                        className: "list-disc pl-6 space-y-2",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Divide-and-conquer algorithm with O(n log n) average case"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 218,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: [
+                                    "Steps:",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ol", {
+                                        className: "list-decimal pl-8 mt-2",
+                                        children: [
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                                children: "Select a pivot element (here: last element)"
+                                            }, void 0, false, {
+                                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                                lineNumber: 221,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                                children: "Partition array into elements less than and greater than pivot"
+                                            }, void 0, false, {
+                                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                                lineNumber: 222,
+                                                columnNumber: 29
+                                            }, undefined),
+                                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                                children: "Recursively sort the partitions"
+                                            }, void 0, false, {
+                                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                                lineNumber: 223,
+                                                columnNumber: 29
+                                            }, undefined)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                                        lineNumber: 220,
+                                        columnNumber: 25
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 219,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "In-place sorting with O(log n) space complexity (stack)"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 226,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Efficient for large datasets, cache-friendly"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 227,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Worst case occurs when pivot selection is unbalanced"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 228,
+                                columnNumber: 21
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                children: "Practical implementations use randomized pivot selection"
+                            }, void 0, false, {
+                                fileName: "src/algorithms/Sorting/QuickSort.js",
+                                lineNumber: 229,
+                                columnNumber: 21
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/algorithms/Sorting/QuickSort.js",
+                        lineNumber: 217,
+                        columnNumber: 17
+                    }, undefined)
+                ]
+            }, void 0, true, {
+                fileName: "src/algorithms/Sorting/QuickSort.js",
+                lineNumber: 215,
+                columnNumber: 13
+            }, undefined)
+        ]
+    }, void 0, true, {
         fileName: "src/algorithms/Sorting/QuickSort.js",
-        lineNumber: 3,
+        lineNumber: 123,
         columnNumber: 9
-    }, this);
-}
+    }, undefined);
+};
+_s(QuickSort, "zmL5VDRBZShzkFR33L+ELWoC8mM=");
 _c = QuickSort;
+exports.default = QuickSort;
 var _c;
 $RefreshReg$(_c, "QuickSort");
 
@@ -33395,7 +34749,7 @@ $RefreshReg$(_c, "QuickSort");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"kEEmq":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react":"21dqq"}],"kEEmq":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$7d6d = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
