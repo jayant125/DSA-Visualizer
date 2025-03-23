@@ -1,12 +1,42 @@
-# React + Vite
+# DSA Visualizer 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![GitHub stars](https://img.shields.io/github/stars/jayant125/DSA-Visualizer?style=social)](https://github.com/jayant125/DSA-Visualizer/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/jayant125/DSA-Visualizer?style=social)](https://github.com/jayant125/DSA-Visualizer/network)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/jayant125/DSA-Visualizer/)
 
-Currently, two official plugins are available:
+A visualization tool for common Data Structures and Algorithms built with HTML, CSS, and JavaScript.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+![Demo](https://placehold.co/600x400?text=Demo+GIF+Here) <!-- Add your demo gif/image here -->
 
-## Expanding the ESLint configuration
+## 🌟 Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Sorting Algorithms** Visualization:
+  - Bubble Sort
+  - Merge Sort
+  - Quick Sort
+  - Insertion Sort
+  - Selection Sort
+  
+- **Pathfinding Algorithms** Visualization:
+  - Dijkstra's Algorithm
+  - A* Search Algorithm
+  - BFS
+  - DFS
+
+- **Data Structures** Visualization:
+  - Linked Lists
+  - Trees (Binary Search Tree)
+  - Stacks
+  - Queues
+
+- **Controls**:
+  - Adjust visualization speed
+  - Generate new random data
+  - Start/Pause/Reset operations
+  - Step-by-step execution
+
+## 🛠️ Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/jayant125/DSA-Visualizer.git
